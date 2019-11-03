@@ -10,9 +10,15 @@ int bb(int arranjo[], int tamanho, int chave){
     int meio;
     
     while(i <= f){
+
         meio = (i+f)/2;
+
         if(arranjo[meio] == chave)
-            return meio;
+
+             if(meio == 0 || arranjo[meio - 1] != arranjo[meio])
+                return meio;
+             else
+                f = meio-1;
         else{  
             
             if(chave > arranjo[meio])
@@ -48,9 +54,10 @@ int main(){
             if( res == -1)
                 cout << peca << " not found" << endl;
             else
-                cout << peca << " found at " << res << endl;
+                cout << peca << " found at " << res + 1 << endl;
         }
     }
+
     return 0;
 }
 
