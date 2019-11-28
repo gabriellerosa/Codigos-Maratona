@@ -12,7 +12,8 @@ vector<int> grafo[100200];
 int estado[100200];
  
 int ciclo;
- 
+
+//complexidade O( v + e ) 
 void dfs(int v){
      
     estado[v] = 1;  // ja visitei o v
