@@ -41,7 +41,7 @@ int didi(int ini, int fim){
                 int filho = grafo[vertice][i].second;
                 int peso_arest = grafo[vertice][i].first;
 
-                if(vis[filho] == 0){ //se o vertice nao foi vicitado    
+                if(vis[filho] == 0){ //se o vertice nao foi visitado    
         
                    if(dis[vertice] + peso_arest/*quero o peso da aresta*/ < dis[filho]){
         
