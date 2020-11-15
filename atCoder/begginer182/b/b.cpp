@@ -1,49 +1,38 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 int main(){
 
-    long long n;
+    int n;
     cin >> n;
 
-    if(n % 3 == 0){
-        cout << "0\n";
-    } else {
+    vector<int> nums (n);
 
-        //se tds os digitos nao forem multiplos de 3
-        // ja é -1;
-        string s = to_string(n);        
-
-        int sum = 0;
-
-        for(int i = 0; i < s.size(); i++){
-            sum += (s[i] - '0');
-        }
-
-        if(s.size() > 1){
-            // testar tirando 1 numero
-            for(int i = 0; i < s.size(); i++){
-                if((sum - (s[i] - '0')) % 3 == 0){
-                    cout << "1\n";
-                    return 0;
-                }
-            }            
-        }
-
-        if(s.size() > 2) {
-            for(int i = 0; i < s.size(); i++){
-                for(int j = i + 1; j < s.size(); j++){
-                    if((sum - (s[i] - '0') - (s[j] - '0')) % 3 == 0){
-                        cout << "2\n";
-                        return 0;
-                    }
-                }
-            }
-        }
-
-        cout << "-1\n";
+    for(int i = 0; i < n; i++){
+        cin >> nums[i];
     }
+
+    int maior = 0;
+    int index = 0;
+
+    for(int i = 2; i <= 1000; i++){
+        int divs = 0;
+
+        for(int j = 0; j < n; j++){
+
+            if(nums[j] % i == 0) {
+                divs++;
+            }        
+        }
+        if(divs > maior) {
+            index = i;
+            maior = divs;
+        }
+    }    
+
+    cout << index << endl;
 
     return 0;
 }

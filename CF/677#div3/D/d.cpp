@@ -20,42 +20,31 @@ int main() {
             cin >> nums[i];
         }
 
-        bool connected = false;
-
-        // pego um e conecto com o primeiro que da pra conectar
+        int index = -1;        
+        
         for(int i = 0; i < n; i++){
-            connected = false;
 
-            for(int j = 0; j < n; j++){
+            if(nums[i] != nums[0]) {
+                grafo.push_back({0 + 1, i + 1});
+                index = i;
+            }            
+        }
 
-                if(j != i && nums[i] != nums[j]){
-                    grafo.push_back(make_pair(i, j));
-                    grafo.push_back(make_pair(j, i));
-                    connected = true;
-                }
-            }
-
-            if(connected == false) {
-                cout << "NO\n";
-                break;
-            }
-        }    
-
-        if(connected == false){
+        if(index == -1) {
+            cout << "NO\n";
             continue;
         }
-
-        vector<bool> printed (n, false);        
-
-        cout << "YES\n";
-        for(int i = 0; i < n; i++){
-            if(printed[i] == false) {
-                cout << grafo[i].first + 1 << " " << grafo[i].second + 1 << endl;
-                printed[grafo[i].first] = true;
-                printed[grafo[i].second] = true;
+        
+        for(int i = 1; i < n; i++){ 
+            if(nums[0] == nums[i]) {
+                grafo.push_back({index + 1, i + 1});
             }
         }
 
+        cout << "YES\n";
+        for(auto e: grafo) {
+            cout << e.first << " " << e.second << "\n";            
+        }
     }
 
     return 0;
