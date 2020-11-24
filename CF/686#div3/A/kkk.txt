@@ -1,0 +1,15 @@
+/*unordered_set<int> nums;
+
+        for(int i = 1; i <= t; i++) {
+            int r = rand() % t + 1;
+
+            while(r == i) {
+                r = rand() % t + 1;
+                if(nums.find(r) == nums.end()){
+                    break;
+                }
+            }
+            cout << r << " ";
+            nums.insert(r);
+        }
+        cout << endl;*/
